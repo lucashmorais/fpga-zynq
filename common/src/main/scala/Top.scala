@@ -7,7 +7,6 @@ import freechips.rocketchip.devices.tilelink._
 import freechips.rocketchip.diplomacy.{LazyModule, LazyModuleImp}
 import freechips.rocketchip.util.DontTouch
 import testchipip._
-import icenet._
 
 case object ZynqAdapterBase extends Field[BigInt]
 
@@ -28,7 +27,6 @@ class Top(implicit val p: Parameters) extends Module {
   adapter.axi <> io.ps_axi_slave
   adapter.io.serial <> target.serial
   adapter.io.bdev <> target.bdev
-  adapter.io.net <> target.net
 
   target.debug := DontCare
   target.tieOffInterrupts()
@@ -43,8 +41,7 @@ class FPGAZynqTop(implicit p: Parameters) extends RocketCoreplex
     with HasSyncExtInterrupts
     with HasNoDebug
     with HasPeripherySerial
-    with HasPeripheryBlockDevice
-    with HasPeripheryIceNIC {
+    with HasPeripheryBlockDevice {
   override lazy val module = new FPGAZynqTopModule(this)
 }
 
@@ -56,5 +53,4 @@ class FPGAZynqTopModule(outer: FPGAZynqTop) extends RocketCoreplexModule(outer)
     with HasNoDebugModuleImp
     with HasPeripherySerialModuleImp
     with HasPeripheryBlockDeviceModuleImp
-    with HasPeripheryIceNICModuleImp
     with DontTouch
