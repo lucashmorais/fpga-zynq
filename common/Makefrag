@@ -100,6 +100,9 @@ src/verilog/$(TOP_MODULE).$(CONFIG).v: $(common_build)/$(TOP_MODULE).$(CONFIG).v
 
 rocket: src/verilog/$(TOP_MODULE).$(CONFIG).v
 
+/workdir/fpga-zynq/common/bootrom/%.img:
+	$(MAKE) -C $(common)/bootrom
+
 
 # Project generation
 # ------------------------------------------------------------------------------
