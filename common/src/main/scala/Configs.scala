@@ -1,7 +1,7 @@
 package zynq
 
 import chisel3._
-import freechips.rocketchip.chip.{ExtMem, ExtIn, DefaultConfig, DualCoreConfig, QuadCoreConfig, HexaCoreConfig, DefaultSmallConfig, BaseConfig, WithoutTLMonitors}
+import freechips.rocketchip.chip.{ExtMem, ExtIn, DefaultConfig, DualCoreConfig, DualCoreConfigWithRoccExample, QuadCoreConfig, HexaCoreConfig, DefaultSmallConfig, BaseConfig, WithoutTLMonitors}
 import freechips.rocketchip.config.{Parameters, Config}
 import freechips.rocketchip.coreplex.{RocketTilesKey, L1toL2Config, CacheBlockBytes}
 import freechips.rocketchip.rocket.{RocketTileParams, RocketCoreParams, MulDivParams, DCacheParams, ICacheParams}
@@ -48,6 +48,7 @@ class DefaultMediumConfig extends Config(new WithNMediumCores(1) ++ new BaseConf
 
 class ZynqConfig extends Config(new WithZynqAdapter ++ new DefaultConfig)
 class ZynqDualCoreConfig extends Config(new WithZynqAdapter ++ new DualCoreConfig)
+class ZynqDualCoreConfigWithRoccExample extends Config(new WithZynqAdapter ++ new DualCoreConfigWithRoccExample)
 class ZynqQuadCoreConfig extends Config(new WithZynqAdapter ++ new QuadCoreConfig)
 class ZynqHexaCoreConfig extends Config(new WithZynqAdapter ++ new HexaCoreConfig)
 class ZynqMediumConfig extends Config(new WithZynqAdapter ++ new DefaultMediumConfig)
@@ -55,6 +56,7 @@ class ZynqSmallConfig extends Config(new WithZynqAdapter ++ new DefaultSmallConf
 
 class ZynqFPGAConfig extends Config(new WithoutTLMonitors ++ new ZynqConfig)
 class ZynqDualCoreFPGAConfig extends Config(new WithoutTLMonitors ++ new ZynqDualCoreConfig)
+class ZynqDualCoreFPGAConfigWithRoccExample extends Config(new WithoutTLMonitors ++ new ZynqDualCoreConfigWithRoccExample)
 class ZynqHexaCoreFPGAConfig extends Config(new WithoutTLMonitors ++ new ZynqHexaCoreConfig)
 class ZynqMediumFPGAConfig extends Config(new WithoutTLMonitors ++ new ZynqMediumConfig)
 class ZynqSmallFPGAConfig extends Config(new WithoutTLMonitors ++ new ZynqSmallConfig)
