@@ -6,8 +6,7 @@ CFLAGS_RV64=-mabi=lp64 -march=rv64ima
 CFLAGS_RV32=-mabi=ilp32 -march=rv32ima
 OBJCOPY=riscv64-unknown-elf-objcopy
 OBJDUMP=riscv64-unknown-elf-objdump
-#DTB=/extra/Cache/fpga-zynq/common/bootrom/device-tree/hexa-core.dtb
-DTB=/extra/Cache/fpga-zynq/common/bootrom/device-tree/dual-core-with-useless-acc.dtb
+DTB=./device-tree/dual-core.dtb
 
 img: $(bootrom_img)
 
